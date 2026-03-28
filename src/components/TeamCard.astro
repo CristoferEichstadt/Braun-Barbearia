@@ -25,8 +25,12 @@ const base = import.meta.env.BASE_URL;
     <!-- Gradient overlay always visible at bottom -->
     <div class="absolute inset-0 bg-gradient-to-t from-carvao-quente via-carvao-quente/20 to-transparent"></div>
 
-    <!-- Bio overlay on hover -->
-    <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-cafe-noite via-cafe-noite/80 to-cafe-noite/30 p-5 opacity-0 transition-all duration-500 group-hover:opacity-100">
+    <!-- Bio overlay — hover (desktop) ou toggle (mobile) -->
+    <div class="bio-overlay absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-cafe-noite via-cafe-noite/80 to-cafe-noite/30 p-5 opacity-0 pointer-events-none transition-all duration-500 group-hover:opacity-100 group-hover:pointer-events-auto">
+      <!-- Botão fechar (mobile) -->
+      <button class="bio-close absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white/70 hover:text-white lg:hidden" aria-label="Fechar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
       <p class="text-xs leading-relaxed text-branco/80 line-clamp-6 sm:text-sm">
         {member.bio}
       </p>
@@ -62,5 +66,55 @@ const base = import.meta.env.BASE_URL;
     <p class="mt-0.5 text-[11px] text-branco/40">
       {member.specialty}
     </p>
+    <!-- Botão "Ver mais" — só no mobile -->
+    <button
+      class="bio-toggle mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-ambar-edison/30 bg-ambar-edison/10 py-2 text-xs font-medium text-ambar-edison transition-colors hover:bg-ambar-edison/20 lg:hidden"
+      aria-expanded="false"
+    >
+      <span class="toggle-text">Ver mais</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="toggle-icon transition-transform duration-300" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
   </div>
 </article>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.bio-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card    = btn.closest('article')!;
+      const overlay = card.querySelector<HTMLElement>('.bio-overlay')!;
+      const icon    = btn.querySelector<HTMLElement>('.toggle-icon')!;
+      const label   = btn.querySelector<HTMLElement>('.toggle-text')!;
+      const open    = btn.getAttribute('aria-expanded') === 'true';
+
+      if (open) {
+        overlay.style.opacity       = '';
+        overlay.style.pointerEvents = '';
+        btn.setAttribute('aria-expanded', 'false');
+        label.textContent  = 'Ver mais';
+        icon.style.transform = '';
+      } else {
+        overlay.style.opacity       = '1';
+        overlay.style.pointerEvents = 'auto';
+        btn.setAttribute('aria-expanded', 'true');
+        label.textContent  = 'Ver menos';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.bio-close').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card    = btn.closest('article')!;
+      const overlay = card.querySelector<HTMLElement>('.bio-overlay')!;
+      const toggle  = card.querySelector<HTMLElement>('.bio-toggle');
+      const icon    = toggle?.querySelector<HTMLElement>('.toggle-icon');
+      const label   = toggle?.querySelector<HTMLElement>('.toggle-text');
+
+      overlay.style.opacity       = '';
+      overlay.style.pointerEvents = '';
+      toggle?.setAttribute('aria-expanded', 'false');
+      if (label) label.textContent  = 'Ver mais';
+      if (icon)  icon.style.transform = '';
+    });
+  });
+</script>
