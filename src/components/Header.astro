@@ -166,7 +166,7 @@ const navLinks = [
   function updateHeader() {
     const y = window.scrollY;
     const scrolled = y > 80;
-    const pastHero = !hasHero || y > heroHeight * 0.6;
+    const pastHero = !hasHero || isMenuOpen || y > heroHeight * 0.6;
 
     if (scrolled) {
       header?.classList.add('bg-azul-petroleo/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-black/20');
