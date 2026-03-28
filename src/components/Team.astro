@@ -1,6 +1,7 @@
 ---
 import { team } from '../data/team';
 import TeamCard from './TeamCard.astro';
+const base = import.meta.env.BASE_URL;
 
 const founders = team.filter((m) => m.isFounder);
 const management = team.filter((m) => !m.isFounder && m.role.includes('Gestão'));
@@ -15,7 +16,7 @@ const barbers = team.filter((m) => !m.isFounder && !m.role.includes('Gestão'));
     <!-- Team banner -->
     <div class="reveal-scale relative mb-20 overflow-hidden rounded-3xl">
       <img
-        src="/images/equipe-toda.jpg"
+        src={`${base}images/equipe-toda.jpg`}
         alt="Barbearia Braun em ação — todos os barbeiros de uniforme caqui atendendo clientes"
         width="1200"
         height="400"
@@ -63,7 +64,7 @@ const barbers = team.filter((m) => !m.isFounder && !m.role.includes('Gestão'));
     <div class="reveal mt-16 flex justify-center">
       <div class="relative overflow-hidden rounded-3xl max-w-xl w-full group">
         <img
-          src="/images/donos.jpg"
+          src={`${base}images/donos.jpg`}
           alt="Braun e Nick, o casal fundador da Braun Barbearia, posando juntos"
           width="1080"
           height="1350"

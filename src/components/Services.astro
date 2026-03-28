@@ -1,5 +1,6 @@
 ---
 import { services } from '../data/services';
+const base = import.meta.env.BASE_URL;
 
 const badgeStyles: Record<string, string> = {
   ambar: 'bg-ambar-edison text-cafe-noite',
@@ -71,7 +72,7 @@ const badgeStyles: Record<string, string> = {
 
     <div class="mt-12 text-center reveal">
       <a
-        href="/servicos"
+        href={`${base}servicos`}
         class="inline-flex items-center gap-2 rounded-full border-2 border-carvao-quente px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-carvao-quente transition-all duration-300 hover:bg-carvao-quente hover:text-branco"
       >
         Ver Catálogo Completo
