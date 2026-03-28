@@ -30,7 +30,7 @@ const barbers = team.filter((m) => !m.isFounder && !m.role.includes('Gestão'));
       ))}
     </div>
 
-    <div class="flex-1 min-h-0 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div id="team-scroll" class="flex-1 min-h-0 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {barbers.map((member, i) => (
         <div class={`reveal reveal-delay-${(i % 5) + 1} snap-start shrink-0 w-[62vw] sm:w-[45vw] h-full`}>
           <TeamCard member={member} />
@@ -38,6 +38,28 @@ const barbers = team.filter((m) => !m.isFounder && !m.role.includes('Gestão'));
       ))}
     </div>
 
+    <!-- Indicador de scroll — mobile only -->
+    <div class="mt-3 mb-1 lg:hidden shrink-0 flex justify-center" aria-hidden="true">
+      <div class="relative w-24 h-[3px] rounded-full bg-white/10">
+        <div id="team-thumb" class="absolute top-0 left-0 h-full w-[20%] rounded-full bg-ambar-edison"></div>
+      </div>
+    </div>
+
   </div>
 
 </section>
+
+<script>
+  const scrollEl = document.getElementById('team-scroll');
+  const thumb    = document.getElementById('team-thumb');
+
+  if (scrollEl && thumb) {
+    const update = () => {
+      const max      = scrollEl.scrollWidth - scrollEl.clientWidth;
+      const progress = max > 0 ? scrollEl.scrollLeft / max : 0;
+      thumb.style.left = `${progress * 80}%`;
+    };
+    scrollEl.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>
