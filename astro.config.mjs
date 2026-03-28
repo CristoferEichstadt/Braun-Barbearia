@@ -10,5 +10,6 @@ export default defineConfig({
   image: {
     domains: [],
   },
-  site: 'https://braunbarbearia.com.br',
+  site: 'https://cristofereichstadt.github.io',
+  base: '/Braun-Barbearia',
 });
