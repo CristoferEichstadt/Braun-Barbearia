@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${base}logo-braun-hd.png`} />
+    <meta property="og:image" content={`${base}/logo-braun-hd.png`} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Braun Barbearia" />
@@ -35,18 +35,18 @@ const base = import.meta.env.BASE_URL;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${base}logo-braun-hd.png`} />
+    <meta name="twitter:image" content={`${base}/logo-braun-hd.png`} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;700&family=Pacifico&family=Playfair+Display:wght@700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;700&family=Pacifico&family=Playfair+Display:wght@700;900&display=swap"
       rel="stylesheet"
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href={`${base}logo-braun.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/logo-braun.svg`} />
 
     <title>{title}</title>
 
@@ -76,7 +76,7 @@ const base = import.meta.env.BASE_URL;
         { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "20:00" },
         { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "06:30", "closes": "12:00" }
       ],
-      "image": base + "logo-braun-hd.png",
+      "image": base + "/logo-braun-hd.png",
       "priceRange": "R$ 5 - R$ 45",
       "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
       "aggregateRating": {

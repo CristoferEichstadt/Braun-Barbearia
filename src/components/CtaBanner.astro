@@ -1,80 +1,83 @@
 ---
 const base = import.meta.env.BASE_URL;
-const propostas = [
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>`,
-    title: 'Profissionais Especializados',
-    description: 'Barbeiros com formação contínua e paixão pelo ofício.',
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    title: 'Sem Espera',
-    description: 'Agendamento online para ser atendido na hora.',
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C5.71 4 7 5.5 8 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C18.29 4 17 5.5 16 7"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>`,
-    title: 'Satisfação Garantida',
-    description: 'Se não ficar perfeito, ajustamos até você aprovar.',
-  },
-];
 ---
 
-<section id="contato" class="relative overflow-hidden grain" aria-labelledby="cta-titulo">
-  <!-- Background image -->
-  <div class="absolute inset-0">
-    <img
-      src={`${base}images/fachada.jpg`}
-      alt="Fachada externa da Braun Barbearia"
-      width="1920"
-      height="800"
-      class="h-full w-full object-cover"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="absolute inset-0 bg-azul-petroleo/92"></div>
-  </div>
+<section id="contato" class="relative overflow-hidden" aria-labelledby="cta-titulo">
 
-  <div class="relative z-10 py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center reveal">
-        <h2 id="cta-titulo" class="font-heading text-4xl font-bold text-branco sm:text-5xl lg:text-6xl">
-          Pronto Para Elevar<br />
-          Seu <span class="text-ambar-edison drop-shadow-[0_0_20px_rgba(212,145,42,0.3)]">Estilo</span>?
+  <div class="grid lg:grid-cols-2 min-h-[600px]">
+
+    <!-- ░░ LADO ESQUERDO — CONTEÚDO ░░ -->
+    <div class="relative flex flex-col justify-center px-8 py-20 sm:px-12 lg:px-16 bg-[#0d0a08]">
+      <!-- Warm ambient glow -->
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-ambar-edison/8 blur-[80px] pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-ambar-edison">Agende Agora</span>
+
+        <h2 id="cta-titulo" class="mt-4 font-accent text-5xl font-bold uppercase leading-none text-branco sm:text-6xl lg:text-7xl">
+          Pronto Para<br />
+          Elevar Seu<br />
+          <span class="text-ambar-edison">Estilo?</span>
         </h2>
-        <p class="mx-auto mt-6 max-w-xl text-lg text-branco/60">
-          Agende agora e descubra por que centenas de homens confiam na Braun há mais de 14 anos.
+
+        <p class="mt-6 max-w-md text-base text-branco/50 leading-relaxed">
+          Mais de 14 anos cuidando do estilo masculino em Blumenau. Agende com os melhores.
         </p>
       </div>
 
-      <!-- Value propositions -->
-      <div class="mt-14 grid gap-8 sm:grid-cols-3">
-        {propostas.map((p, i) => (
-          <div class={`reveal reveal-delay-${i + 1} flex flex-col items-center text-center`}>
-            <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-branco/5 text-ambar-edison border border-branco/10 backdrop-blur-sm" set:html={p.icon} />
-            <h3 class="mt-5 text-lg font-bold text-branco">{p.title}</h3>
-            <p class="mt-2 text-sm text-branco/50 leading-relaxed">{p.description}</p>
+      <!-- Diferenciais -->
+      <div class="relative z-10 mt-10 space-y-4 reveal">
+        {[
+          { icon: '✦', text: 'Profissionais com formação contínua' },
+          { icon: '✦', text: 'Agendamento online — sem espera' },
+          { icon: '✦', text: 'Satisfação garantida ou ajustamos' },
+        ].map(item => (
+          <div class="flex items-center gap-3 text-sm text-branco/60">
+            <span class="text-ambar-edison text-xs">{item.icon}</span>
+            {item.text}
           </div>
         ))}
       </div>
 
-      <!-- CTA button -->
-      <div class="mt-14 text-center reveal">
+      <!-- CTA -->
+      <div class="relative z-10 mt-10 reveal">
         <a
           href="https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário."
           target="_blank"
           rel="noopener noreferrer"
-          class="group inline-flex items-center gap-3 rounded-full bg-green-600 px-10 py-5 text-lg font-bold text-branco shadow-xl shadow-green-600/20 transition-all duration-300 hover:bg-green-500 hover:shadow-2xl hover:shadow-green-500/30 hover:-translate-y-1 active:translate-y-0 touch-action-manipulation"
+          class="group inline-flex items-center gap-3 rounded-full bg-ambar-edison px-8 py-4 text-base font-bold uppercase tracking-wide text-cafe-noite shadow-xl shadow-ambar-edison/25 transition-all duration-300 hover:bg-amarelo-fachada hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
         >
-          <!-- WhatsApp icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="transition-transform duration-300 group-hover:scale-110"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Agendar Agora pelo WhatsApp
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="transition-transform duration-300 group-hover:scale-110"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar pelo WhatsApp
         </a>
 
-        <p class="mt-6 flex items-center justify-center gap-2 text-sm text-branco/30">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p class="mt-5 flex items-center gap-2 text-xs text-branco/25">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           Rua Dr. Pedro Zimmermann, 6646 — Itoupava Central, Blumenau, SC
         </p>
       </div>
     </div>
+
+    <!-- ░░ LADO DIREITO — FOTO DOS FUNDADORES ░░ -->
+    <div class="relative min-h-[400px] lg:min-h-full overflow-hidden">
+      <img
+        src={`${base}/images/donos.jpg`}
+        alt="Braun e Nick, fundadores da Braun Barbearia"
+        class="h-full w-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- Gradiente para fundir com o lado esquerdo -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0d0a08] via-[#0d0a08]/20 to-transparent lg:block hidden" aria-hidden="true"></div>
+      <!-- Quote overlay -->
+      <div class="absolute bottom-8 left-8 right-8 reveal">
+        <blockquote class="border-l-2 border-ambar-edison pl-4">
+          <p class="text-sm italic text-branco/80 leading-relaxed">"Cada cliente que entra sai melhor do que chegou — esse é o nosso compromisso."</p>
+          <footer class="mt-2 text-xs text-ambar-edison font-medium uppercase tracking-widest">— Braun & Nick, Fundadores</footer>
+        </blockquote>
+      </div>
+    </div>
+
   </div>
+
 </section>

@@ -102,7 +102,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/13-produtos-ambiente.jpg',
   },
   {
     id: 8,
@@ -141,7 +141,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/12-barba-navalha-servico.jpg',
   },
   {
     id: 11,
@@ -154,7 +154,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '15 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/produtos-prateleira.jpg',
   },
   {
     id: 12,
@@ -167,7 +167,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/braun-trabalhando.jpg',
   },
   {
     id: 13,
