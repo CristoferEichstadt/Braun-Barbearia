@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  /* Camada 1 — Marca */
+  --color-azul-petroleo: #1A3A4A;
+  --color-azul-royal: #2563EB;
+  --color-branco: #FFFFFF;
+  --color-vermelho-barbeiro: #C41E3A;
+
+  /* Camada 2 — Ambiente */
+  --color-ambar-edison: #D4912A;
+  --color-conhaque: #C47A2D;
+  --color-mogno: #4A2C17;
+  --color-cafe-noite: #2C1810;
+  --color-marrom-cafe: #3B2314;
+  --color-mogno-claro: #8B5E3C;
+  --color-amarelo-fachada: #D4A017;
+
+  /* Camada 3 — UI */
+  --color-cinza-quente: #F5F0EB;
+  --color-branco-quente: #FAFAF7;
+  --color-carvao-quente: #1C1917;
+  --color-grafite-quente: #57534E;
+  --color-cinza-areia: #D6D3D1;
+
+  /* Font families */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Pacifico', cursive;
+  --font-accent: 'Oswald', sans-serif;
+}
+
+/* ═══ Base ═══ */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-carvao-quente);
+  background-color: var(--color-cafe-noite);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ═══ Film grain overlay on dark sections ═══ */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ═══ Reveal animations via IntersectionObserver ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ═══ Warm glow shadow for cards ═══ */
+.shadow-warm {
+  box-shadow: 0 4px 24px -4px rgba(212, 145, 42, 0.12),
+              0 2px 8px -2px rgba(44, 24, 16, 0.08);
+}
+.shadow-warm-lg {
+  box-shadow: 0 8px 40px -8px rgba(212, 145, 42, 0.2),
+              0 4px 16px -4px rgba(44, 24, 16, 0.12);
+}
+
+/* ═══ Divider shapes ═══ */
+.divider-wave {
+  position: relative;
+}
+.divider-wave::before {
+  content: '';
+  position: absolute;
+  top: -48px;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: inherit;
+  clip-path: ellipse(55% 100% at 50% 100%);
+  z-index: 2;
+}
+
+/* ═══ Ambient light flicker (Edison bulb effect) ═══ */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.92; }
+  75% { opacity: 0.97; }
+}
+.edison-glow {
+  box-shadow: 0 0 60px 20px rgba(212, 145, 42, 0.15),
+              0 0 120px 60px rgba(212, 145, 42, 0.05);
+  animation: flicker 4s ease-in-out infinite;
+}
+
+/* ═══ Focus ring ═══ */
+:focus-visible {
+  outline: 2px solid var(--color-ambar-edison);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ═══ Scrollbar styling ═══ */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-cafe-noite); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-mogno-claro);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-conhaque); }
+
+/* ═══ Selection ═══ */
+::selection {
+  background-color: var(--color-ambar-edison);
+  color: var(--color-branco);
+}

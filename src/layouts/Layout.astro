@@ -1,0 +1,126 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Braun Barbearia | Corte, Barba & Grooming Masculino em Blumenau',
+  description = 'Desde 2011 elevando o padrão dos cuidados masculinos. Corte, barba, tratamentos e mais. Agende online. Itoupava Central, Blumenau, SC.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1A3A4A" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/logo-braun-hd.png" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Braun Barbearia" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/logo-braun-hd.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;700&family=Pacifico&family=Playfair+Display:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo-braun.svg" />
+
+    <title>{title}</title>
+
+    <!-- Schema.org LocalBusiness + BarberShop -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "BarberShop"],
+      "name": "Braun Barbearia",
+      "description": "Barbearia premium em Blumenau, SC, desde 2011. Corte, barba, grooming masculino.",
+      "url": "https://braunbarbearia.com.br",
+      "telephone": "+554784334380",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Dr. Pedro Zimmermann, 6646, Loja 1",
+        "addressLocality": "Blumenau",
+        "addressRegion": "SC",
+        "postalCode": "89068-004",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.8833,
+        "longitude": -49.0667
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "13:00", "closes": "20:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "20:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "06:30", "closes": "12:00" }
+      ],
+      "image": "/logo-braun-hd.png",
+      "priceRange": "R$ 5 - R$ 45",
+      "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "200",
+        "bestRating": "5"
+      },
+      "foundingDate": "2011",
+      "sameAs": [
+        "https://www.instagram.com/braun.barbearia/",
+        "https://www.facebook.com/braunbarbearia"
+      ]
+    })} />
+
+    <!-- GA4 + GTM + Meta Pixel placeholders -->
+    <!-- Google Tag Manager -->
+    <!-- <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXX');</script> -->
+    <!-- Meta Pixel -->
+    <!-- <script>!function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','PIXEL_ID');fbq('track','PageView');</script> -->
+  </head>
+  <body class="bg-cafe-noite text-carvao-quente antialiased">
+    <slot />
+
+    <!-- IntersectionObserver for reveal animations -->
+    <script>
+      const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale');
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      } else {
+        // Reduced motion: show everything immediately
+        revealElements.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

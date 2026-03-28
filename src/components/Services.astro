@@ -1,0 +1,82 @@
+---
+import { services } from '../data/services';
+
+const badgeStyles: Record<string, string> = {
+  ambar: 'bg-ambar-edison text-cafe-noite',
+  green: 'bg-green-600 text-branco',
+  conhaque: 'bg-conhaque text-branco',
+  vermelho: 'bg-vermelho-barbeiro text-branco',
+};
+---
+
+<section id="servicos" class="relative bg-cinza-quente py-24 overflow-hidden" aria-labelledby="servicos-titulo">
+  <!-- Top curve -->
+  <div class="absolute top-0 left-0 right-0 h-24 bg-azul-petroleo" style="clip-path: ellipse(60% 100% at 50% 0%);" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <span class="text-xs font-bold uppercase tracking-[0.2em] text-azul-royal">O que oferecemos</span>
+      <h2 id="servicos-titulo" class="mt-3 font-heading text-3xl font-bold text-carvao-quente sm:text-4xl lg:text-5xl">
+        Nossos <span class="text-azul-petroleo">Serviços</span>
+      </h2>
+      <div class="mx-auto mt-4 h-1 w-16 rounded-full bg-azul-royal" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((service, i) => (
+        <div class={`reveal reveal-delay-${(i % 4) + 1} group relative flex flex-col rounded-2xl bg-branco-quente border border-cinza-areia overflow-hidden shadow-warm transition-all duration-300 hover:shadow-warm-lg hover:-translate-y-1`}>
+          {service.badge && (
+            <span class={`absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider shadow-sm ${badgeStyles[service.badgeColor] || 'bg-cinza-quente text-grafite-quente'}`}>
+              {service.badge}
+            </span>
+          )}
+
+          <div class="p-5 pb-0 flex-1 flex flex-col">
+            <span class="mb-1 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-conhaque">
+              <span class="h-1.5 w-1.5 rounded-full bg-conhaque" aria-hidden="true"></span>
+              {service.category}
+            </span>
+
+            <h3 class="font-accent text-lg font-bold uppercase tracking-wide text-carvao-quente mt-1">
+              {service.name}
+            </h3>
+
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-grafite-quente">
+              {service.description}
+            </p>
+          </div>
+
+          <div class="p-5 pt-3">
+            <div class="flex items-end justify-between border-t border-cinza-areia pt-4">
+              <div>
+                <span class="font-accent text-2xl font-bold text-ambar-edison tabular-nums">
+                  {service.price}
+                </span>
+              </div>
+              <a
+                href={`https://wa.me/554784334380?text=Olá! Gostaria de agendar: ${service.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full bg-azul-petroleo px-4 py-2 text-xs font-bold text-branco uppercase tracking-wider transition-all duration-200 hover:bg-azul-royal cursor-pointer"
+                aria-label={`Agendar ${service.name}`}
+              >
+                Agendar
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center reveal">
+      <a
+        href="/servicos"
+        class="inline-flex items-center gap-2 rounded-full border-2 border-carvao-quente px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-carvao-quente transition-all duration-300 hover:bg-carvao-quente hover:text-branco"
+      >
+        Ver Catálogo Completo
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>

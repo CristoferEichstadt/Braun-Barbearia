@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Left ornament (trefoil tab) -->
+  <rect x="22" y="118" width="36" height="44" rx="6" fill="#1A3A4A" stroke="#264E5E" stroke-width="1.2"/>
+
+  <!-- Right ornament (trefoil tab) -->
+  <rect x="342" y="118" width="36" height="44" rx="6" fill="#1A3A4A" stroke="#264E5E" stroke-width="1.2"/>
+
+  <!-- Top tab (barbershop pole mount) -->
+  <rect x="165" y="30" width="70" height="38" rx="5" fill="#1A3A4A" stroke="#264E5E" stroke-width="1.2"/>
+
+  <!-- Barbershop pole stripes -->
+  <rect x="182" y="35" width="5" height="28" rx="1.5" fill="#C41E3A"/>
+  <rect x="191" y="35" width="5" height="28" rx="1.5" fill="#FFFFFF"/>
+  <rect x="200" y="35" width="5" height="28" rx="1.5" fill="#2563EB"/>
+  <rect x="209" y="35" width="5" height="28" rx="1.5" fill="#C41E3A"/>
+
+  <!-- Pole cap (dome on top) -->
+  <ellipse cx="200" cy="32" rx="18" ry="7" fill="#1A3A4A" stroke="#264E5E" stroke-width="1"/>
+  <circle cx="200" cy="26" r="4" fill="#1A3A4A" stroke="#264E5E" stroke-width="1"/>
+
+  <!-- Main Badge Shape -->
+  <rect x="50" y="64" width="300" height="152" rx="10" fill="#1A3A4A" stroke="#264E5E" stroke-width="2"/>
+
+  <!-- Inner border -->
+  <rect x="58" y="72" width="284" height="136" rx="6" fill="none" stroke="#3A7A8A" stroke-width="0.6" opacity="0.4"/>
+
+  <!-- Bottom ornament (pointed tab) -->
+  <path d="M 183,216 L 217,216 L 217,236 Q 217,250 200,256 Q 183,250 183,236 Z" fill="#1A3A4A" stroke="#264E5E" stroke-width="1.2"/>
+
+  <!-- Star left -->
+  <polygon points="105,108 108,116 117,116 110,121 112,129 105,124 98,129 100,121 93,116 102,116" fill="#FFFFFF" opacity="0.85"/>
+
+  <!-- Star right -->
+  <polygon points="295,108 298,116 307,116 300,121 302,129 295,124 288,129 290,121 283,116 292,116" fill="#FFFFFF" opacity="0.85"/>
+
+  <!-- Crossed scissors (BEHIND text) -->
+  <g opacity="0.3">
+    <!-- Blade 1 -->
+    <line x1="130" y1="165" x2="270" y2="105" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Blade 2 -->
+    <line x1="130" y1="105" x2="270" y2="165" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Handle rings -->
+    <circle cx="127" cy="168" r="8" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="127" cy="102" r="8" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+    <!-- Pivot -->
+    <circle cx="200" cy="135" r="4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- "Braun" text (main, on top of scissors) -->
+  <text x="200" y="160" text-anchor="middle" font-family="'Pacifico', cursive" font-size="60" fill="#FFFFFF" letter-spacing="0">Braun</text>
+
+  <!-- Thin decorative line -->
+  <line x1="115" y1="172" x2="285" y2="172" stroke="#FFFFFF" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- "BARBEARIA" text left -->
+  <text x="110" y="194" font-family="'Oswald', 'Arial Narrow', sans-serif" font-size="15" font-weight="400" fill="#FFFFFF" letter-spacing="3.5" opacity="0.85">BARBEARIA</text>
+
+  <!-- Dot separator -->
+  <circle cx="224" cy="190" r="1.8" fill="#FFFFFF" opacity="0.5"/>
+
+  <!-- "DESDE 2011" text right -->
+  <text x="236" y="194" font-family="'Oswald', 'Arial Narrow', sans-serif" font-size="15" font-weight="400" fill="#FFFFFF" letter-spacing="2" opacity="0.65">DESDE 2011</text>
+</svg>

@@ -1,0 +1,146 @@
+---
+const loja = [
+  { label: 'Cortes', href: '#servicos' },
+  { label: 'Barba', href: '#servicos' },
+  { label: 'Tratamentos', href: '/servicos' },
+  { label: 'Combos', href: '/servicos' },
+  { label: 'Dia do Noivo', href: '/servicos' },
+];
+
+const sobre = [
+  { label: 'Nossa História', href: '#inicio' },
+  { label: 'Equipe', href: '#equipe' },
+  { label: 'Protocolo de Higiene', href: '#inicio' },
+  { label: 'Programa de Fidelidade', href: '#contato' },
+  { label: 'Trabalhe Conosco', href: '#contato' },
+];
+
+const suporte = [
+  { label: 'Agende Online', href: 'https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário.' },
+  { label: 'Fale Conosco', href: 'https://wa.me/554784334380?text=Olá! Gostaria de mais informações.' },
+  { label: 'Perguntas Frequentes', href: '/servicos#faq' },
+  { label: 'Política de Privacidade', href: '#' },
+  { label: 'Termos de Uso', href: '#' },
+];
+
+const socials = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/braun.barbearia/',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>`,
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/braunbarbearia',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+  },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/554784334380',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+  },
+  {
+    label: 'Google Maps',
+    href: 'https://maps.google.com/?q=Braun+Barbearia+Blumenau',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  },
+];
+---
+
+<footer class="bg-gradient-to-b from-carvao-quente to-azul-petroleo/80 py-16 grain" role="contentinfo">
+  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Top section -->
+    <div class="grid gap-12 lg:grid-cols-5">
+      <!-- Brand column -->
+      <div class="lg:col-span-2">
+        <img
+          src="/logo-braun.svg"
+          alt="Logo da Braun Barbearia"
+          width="120"
+          height="36"
+          class="h-8 w-auto opacity-60"
+        />
+        <p class="mt-5 font-heading text-lg italic text-branco/40 leading-relaxed">
+          Barba, Cabelo, Bigode,<br />Cerveja e Algo Mais!
+        </p>
+        <p class="mt-1 text-xs text-branco/20 uppercase tracking-widest">Desde 2011</p>
+
+        <!-- Social links -->
+        <div class="mt-6 flex gap-2">
+          {socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-branco/5 text-branco/30 transition-all duration-300 hover:bg-ambar-edison/15 hover:text-ambar-edison"
+              aria-label={`Braun Barbearia no ${s.label}`}
+              set:html={s.icon}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      <div>
+        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Loja</h3>
+        <ul class="mt-4 space-y-2.5" role="list">
+          {loja.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-branco/30 transition-colors duration-200 hover:text-branco/60">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Sobre Nós</h3>
+        <ul class="mt-4 space-y-2.5" role="list">
+          {sobre.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-branco/30 transition-colors duration-200 hover:text-branco/60">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Suporte</h3>
+        <ul class="mt-4 space-y-2.5" role="list">
+          {suporte.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-branco/30 transition-colors duration-200 hover:text-branco/60"
+                {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="mt-12 h-px bg-gradient-to-r from-transparent via-branco/10 to-transparent" aria-hidden="true"></div>
+
+    <!-- Bottom bar -->
+    <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <p class="text-[11px] text-branco/15">
+        Rua Dr. Pedro Zimmermann, 6646, Loja 1 — Itoupava Central, Blumenau, SC
+      </p>
+      <div class="flex gap-4 text-[11px] text-branco/15">
+        <a href="tel:+554784334380" class="hover:text-branco/30 transition-colors">(47) 8433-4380</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="tel:+5547999002770" class="hover:text-branco/30 transition-colors">(47) 99900-2770</a>
+      </div>
+    </div>
+    <p class="mt-4 text-center text-[10px] text-branco/10 uppercase tracking-widest">
+      &copy; {new Date().getFullYear()} Braun Barbearia
+    </p>
+  </div>
+</footer>

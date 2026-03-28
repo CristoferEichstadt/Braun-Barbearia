@@ -1,0 +1,82 @@
+---
+import { team } from '../data/team';
+import TeamCard from './TeamCard.astro';
+
+const founders = team.filter((m) => m.isFounder);
+const management = team.filter((m) => !m.isFounder && m.role.includes('Gestão'));
+const barbers = team.filter((m) => !m.isFounder && !m.role.includes('Gestão'));
+---
+
+<section id="equipe" class="relative bg-cinza-quente py-24 overflow-hidden" aria-labelledby="equipe-titulo">
+  <!-- Top curve -->
+  <div class="absolute top-0 left-0 right-0 h-20 bg-azul-petroleo" style="clip-path: ellipse(60% 100% at 50% 0%);" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+    <!-- Team banner -->
+    <div class="reveal-scale relative mb-20 overflow-hidden rounded-3xl">
+      <img
+        src="/images/equipe-toda.jpg"
+        alt="Barbearia Braun em ação — todos os barbeiros de uniforme caqui atendendo clientes"
+        width="1200"
+        height="400"
+        class="h-72 w-full object-cover sm:h-96"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-cafe-noite/95 via-cafe-noite/60 to-transparent flex items-center">
+        <div class="px-8 sm:px-14">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-ambar-edison">A Família</span>
+          <h2 id="equipe-titulo" class="mt-2 font-heading text-4xl font-bold text-branco sm:text-5xl lg:text-6xl">
+            Equipe de<br /><span class="text-ambar-edison">Elite</span>
+          </h2>
+          <p class="mt-4 max-w-md text-branco/60 text-lg">
+            Cada um com sua história, todos com a mesma paixão.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founders -->
+    <div class="grid gap-6 sm:grid-cols-2 mb-6">
+      {founders.map((member) => (
+        <TeamCard member={member} />
+      ))}
+    </div>
+
+    <!-- Management -->
+    {management.length > 0 && (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+        {management.map((member) => (
+          <TeamCard member={member} />
+        ))}
+      </div>
+    )}
+
+    <!-- Barbers grid -->
+    <div class="grid gap-4 grid-cols-2 lg:grid-cols-5">
+      {barbers.map((member) => (
+        <TeamCard member={member} />
+      ))}
+    </div>
+
+    <!-- Founders photo -->
+    <div class="reveal mt-16 flex justify-center">
+      <div class="relative overflow-hidden rounded-3xl max-w-xl w-full group">
+        <img
+          src="/images/donos.jpg"
+          alt="Braun e Nick, o casal fundador da Braun Barbearia, posando juntos"
+          width="1080"
+          height="1350"
+          class="w-full object-cover max-h-[500px] transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-cafe-noite/90 via-transparent to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-8">
+          <p class="font-heading text-2xl font-bold text-branco">Braun & Nick</p>
+          <p class="mt-1 text-sm text-branco/60">Juntos desde 2011 — a alma da Braun Barbearia</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

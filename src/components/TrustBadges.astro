@@ -1,0 +1,38 @@
+---
+const badges = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    title: '+14 Anos',
+    description: 'Referência em grooming masculino em Blumenau desde 2011.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>`,
+    title: 'Higiene Total',
+    description: 'Esterilização contínua, navalhas descartáveis, álcool 70%.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>`,
+    title: '4.8 Estrelas',
+    description: 'Centenas de clientes nos avaliam com nota máxima no Google.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>`,
+    title: '+12 Pagamentos',
+    description: 'PIX, cartão, Apple Pay, Google Pay — pague como preferir.',
+  },
+];
+---
+
+<section class="relative bg-azul-petroleo py-16 grain" aria-label="Selos de confiança">
+  <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      {badges.map((badge, i) => (
+        <div class={`reveal reveal-delay-${i + 1} flex flex-col items-center text-center rounded-2xl border border-azul-royal/15 bg-azul-petroleo/60 px-4 py-6 backdrop-blur-sm transition-all duration-300 hover:border-azul-royal/40 hover:bg-azul-petroleo/80`}>
+          <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-azul-royal/15 text-azul-royal" set:html={badge.icon} />
+          <h3 class="text-sm font-bold text-branco sm:text-base">{badge.title}</h3>
+          <p class="mt-1 text-xs leading-relaxed text-branco/50 hidden sm:block">{badge.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
