@@ -104,17 +104,4 @@ export const team: TeamMember[] = [
     ctaLabel: 'Agendar com Coqueirinho',
     ctaLink: 'https://wa.me/554784334380?text=Olá! Gostaria de agendar com o Coqueirinho.',
   },
-  {
-    id: 9,
-    nickname: 'Thalita',
-    realName: null,
-    role: 'Recepcionista & Gestão',
-    photo: '/images/equipe/thalita.jpg',
-    specialty: 'Atendimento ao público, gestão da casa',
-    experience: null,
-    bio: 'A mais nova integrante da família! Vem de Pomerode com esse sorrisão no rosto para receber cada um de vocês com aquele café e disposição de sobra. Atendimento ao público é a especialidade dela, mas também é responsável por gerenciar a casa ao lado do casal Braun. Manda mensagem no WhatsApp que o contato é direto com ela e a resenha na recepção tá garantida!',
-    isFounder: false,
-    ctaLabel: 'Fale com Thalita',
-    ctaLink: 'https://wa.me/554784334380?text=Olá Thalita! Gostaria de agendar um horário.',
-  },
 ];

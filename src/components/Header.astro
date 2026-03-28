@@ -10,15 +10,58 @@ const navLinks = [
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Navegação principal">
-    <a href="/" class="flex items-center gap-2 group" aria-label="Braun Barbearia — Página inicial">
-      <img
-        src={`${base}/logo-braun.svg`}
-        alt="Logo da Braun Barbearia — desde 2011"
-        width="160"
-        height="48"
-        class="h-10 w-auto sm:h-12 drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
-      />
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:py-4 sm:px-6 lg:px-8" aria-label="Navegação principal">
+    <a href="/" id="header-logo" class="group shrink-0 opacity-0 pointer-events-none transition-all duration-500" aria-label="Braun Barbearia — Página inicial">
+      <svg viewBox="0 -8 180 92" width="126" height="70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(212,160,23,0.5)]">
+        <defs>
+          <filter id="logo-shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0d0a08" flood-opacity="0.7"/>
+          </filter>
+          <!-- Diagonal barber stripe pattern -->
+          <pattern id="barber-stripe" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(-45)">
+            <rect width="4" height="10" fill="#C41E3A"/>
+            <rect x="4" width="3" height="10" fill="#f5f5f5"/>
+            <rect x="7" width="3" height="10" fill="#2563EB"/>
+          </pattern>
+          <clipPath id="pole-clip">
+            <rect x="82" y="0" width="16" height="82" rx="3"/>
+          </clipPath>
+        </defs>
+
+        <!-- Central barber pole — drawn first, badge sits ON TOP hiding the middle section -->
+        <rect x="82" y="0" width="16" height="82" rx="3" fill="#0c1e2d"/>
+        <rect x="82" y="0" width="16" height="82" fill="url(#barber-stripe)" clip-path="url(#pole-clip)" opacity="0.92"/>
+        <!-- TOP CAP: borda larga + dome + knob pequeno -->
+        <!-- borda sai ACIMA da badge deixando polo visível abaixo -->
+        <ellipse cx="90" cy="3.5"  rx="14" ry="2.8" fill="#0a1b28"/><!-- rim -->
+        <ellipse cx="90" cy="-2"   rx="9"  ry="6"   fill="#0a1b28"/><!-- dome -->
+        <circle  cx="90" cy="-6.5" r="2"             fill="#0a1b28"/><!-- knob pequeno -->
+
+        <!-- BOTTOM CAP: espelho — borda ABAIXO do badge, polo visível acima -->
+        <ellipse cx="90" cy="71"   rx="14" ry="2.8" fill="#0a1b28"/><!-- rim -->
+        <ellipse cx="90" cy="77"   rx="9"  ry="6"   fill="#0a1b28"/><!-- dome -->
+        <circle  cx="90" cy="82"   r="2"             fill="#0a1b28"/><!-- knob pequeno -->
+
+        <!-- Badge body — covers the pole in the middle, making it look like it pierces through -->
+        <rect x="13" y="11" width="154" height="54" rx="7" fill="#1a3a4a" filter="url(#logo-shadow)"/>
+        <!-- Inner border -->
+        <rect x="18" y="15" width="144" height="46" rx="5" fill="none" stroke="#4a8fa0" stroke-width="0.9" opacity="0.65"/>
+
+        <!-- Stars -->
+        <text x="30" y="38" font-size="11" fill="#FFFFFF" opacity="0.85" text-anchor="middle">★</text>
+        <text x="150" y="38" font-size="11" fill="#FFFFFF" opacity="0.85" text-anchor="middle">★</text>
+        <!-- Scissors (subtle) -->
+        <line x1="34" y1="54" x2="146" y2="20" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.13"/>
+        <line x1="34" y1="20" x2="146" y2="54" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.13"/>
+        <!-- Braun script -->
+        <text x="90" y="42" font-family="'Pacifico', cursive" font-size="24" fill="#FFFFFF" text-anchor="middle">Braun</text>
+        <!-- Divider -->
+        <line x1="32" y1="47" x2="148" y2="47" stroke="#FFFFFF" stroke-width="0.6" opacity="0.30"/>
+        <!-- BARBEARIA -->
+        <text x="90" y="54" font-family="'Oswald', 'Arial Narrow', sans-serif" font-size="7.5" font-weight="400" fill="#FFFFFF" text-anchor="middle" letter-spacing="2.5" opacity="0.80">BARBEARIA</text>
+        <!-- DESDE 2011 -->
+        <text x="90" y="62" font-family="'Oswald', 'Arial Narrow', sans-serif" font-size="6.5" font-weight="300" fill="#FFFFFF" text-anchor="middle" letter-spacing="2" opacity="0.60">DESDE 2011</text>
+      </svg>
     </a>
 
     <!-- Desktop nav -->
@@ -39,16 +82,17 @@ const navLinks = [
       href="https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário."
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden md:inline-flex items-center gap-2 rounded-full bg-ambar-edison px-6 py-2.5 text-sm font-bold text-cafe-noite transition-all duration-300 hover:bg-amarelo-fachada hover:shadow-lg hover:shadow-ambar-edison/25 hover:-translate-y-0.5 active:translate-y-0"
+      id="header-cta"
+      class="hidden md:inline-flex items-center gap-2 rounded-full bg-ambar-edison px-6 py-2.5 text-sm font-bold text-cafe-noite transition-all duration-500 hover:bg-amarelo-fachada hover:shadow-lg hover:shadow-ambar-edison/25 hover:-translate-y-0.5 active:translate-y-0 opacity-0 pointer-events-none"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Agendar
     </a>
 
     <!-- Mobile hamburger -->
     <button
       id="menu-toggle"
-      class="flex h-11 w-11 items-center justify-center rounded-full text-branco/80 transition-all hover:bg-branco/10 hover:text-ambar-edison md:hidden"
+      class="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/30 backdrop-blur-sm text-branco/80 transition-all hover:bg-black/50 hover:text-ambar-edison hover:border-ambar-edison/40 md:hidden"
       aria-label="Abrir menu de navegação"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -61,70 +105,150 @@ const navLinks = [
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="hidden bg-cafe-noite/98 backdrop-blur-xl border-t border-ambar-edison/20 md:hidden"
+    class="hidden bg-[#0d0a08]/50 border-t border-ambar-edison/15 md:hidden overflow-hidden"
     role="dialog"
     aria-label="Menu de navegação mobile"
   >
-    <ul class="flex flex-col px-4 py-6 gap-1" role="list">
+    <ul class="flex flex-col px-5 py-4 gap-0.5" role="list">
       {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            class="mobile-nav-link flex items-center gap-3 rounded-xl px-4 py-3.5 text-lg font-medium text-branco/70 transition-all hover:bg-ambar-edison/10 hover:text-ambar-edison hover:pl-6"
+            class="mobile-nav-link flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-branco/60 transition-all hover:bg-ambar-edison/10 hover:text-ambar-edison"
           >
-            <span class="h-1 w-1 rounded-full bg-ambar-edison/50" aria-hidden="true"></span>
             {link.label}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ambar-edison/40" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
           </a>
         </li>
       ))}
-      <li class="mt-4 pt-4 border-t border-branco/10">
+      <li class="mt-3 pt-3 border-t border-white/10">
         <a
           href="https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário."
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center justify-center gap-2 rounded-full bg-ambar-edison px-6 py-4 text-base font-bold text-cafe-noite transition-all hover:bg-amarelo-fachada"
+          class="flex items-center justify-center gap-2 rounded-full bg-ambar-edison px-6 py-3.5 text-sm font-bold text-cafe-noite transition-all hover:bg-amarelo-fachada"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          Agende Seu Horário
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar pelo WhatsApp
         </a>
       </li>
     </ul>
   </div>
 </header>
 
+<!-- Overlay: cobre o conteúdo abaixo do header com blur — z-40, header é z-50 -->
+<div id="menu-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden md:hidden" aria-hidden="true"></div>
+
 <script>
   const header = document.getElementById('header');
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('menu-overlay');
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
+  const logo = document.getElementById('header-logo');
+  const cta = document.getElementById('header-cta');
 
-  // Scroll-aware header
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
+  const heroHeight = window.innerHeight;
+  let isMenuOpen = false;
+  let closeTimer = null;
+
+  // ── Header background (scroll-aware) ──────────────────────────
+  function updateHeader() {
     const y = window.scrollY;
-    if (y > 80) {
+    const scrolled = y > 80;
+    const pastHero = y > heroHeight * 0.6;
+
+    if (scrolled) {
       header?.classList.add('bg-azul-petroleo/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-black/20');
+      header?.classList.remove('bg-black/92');
+    } else if (isMenuOpen) {
+      header?.classList.add('bg-black/92', 'backdrop-blur-xl');
+      header?.classList.remove('bg-azul-petroleo/95', 'shadow-lg', 'shadow-black/20');
     } else {
-      header?.classList.remove('bg-azul-petroleo/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-black/20');
+      header?.classList.remove('bg-azul-petroleo/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-black/20', 'bg-black/92');
     }
-    lastScroll = y;
-  }, { passive: true });
+
+    if (pastHero) {
+      logo?.classList.remove('opacity-0', 'pointer-events-none');
+      logo?.classList.add('opacity-100');
+      cta?.classList.remove('opacity-0', 'pointer-events-none');
+      cta?.classList.add('opacity-100');
+    } else {
+      logo?.classList.add('opacity-0', 'pointer-events-none');
+      logo?.classList.remove('opacity-100');
+      cta?.classList.add('opacity-0', 'pointer-events-none');
+      cta?.classList.remove('opacity-100');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // ── Menu animation ─────────────────────────────────────────────
+  const NAV_DURATION = 250; // ms para o nav escurecer
+
+  function openMenu() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    isMenuOpen = true;
+    iconOpen?.classList.add('hidden');
+    iconClose?.classList.remove('hidden');
+    toggle?.setAttribute('aria-expanded', 'true');
+
+    // 1. Nav escurece + overlay aparece (abaixo do header)
+    updateHeader();
+    overlay?.classList.remove('hidden');
+    overlay.style.top = (header?.offsetHeight ?? 60) + 'px';
+    Object.assign(overlay.style, { opacity: '0', transition: 'none' });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      Object.assign(overlay.style, { opacity: '1', transition: `opacity ${NAV_DURATION}ms ease` });
+    }));
+
+    // 2. Após nav terminar → menu desliza de cima pra baixo
+    setTimeout(() => {
+      menu?.classList.remove('hidden');
+      Object.assign(menu.style, { maxHeight: '0', opacity: '0', overflow: 'hidden', transition: 'none' });
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        Object.assign(menu.style, {
+          maxHeight: '600px',
+          opacity: '1',
+          transition: 'max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease',
+        });
+      }));
+    }, NAV_DURATION);
+  }
+
+  function closeMenu() {
+    isMenuOpen = false;
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+
+    // Menu fecha primeiro
+    Object.assign(menu.style, {
+      maxHeight: '0',
+      opacity: '0',
+      transition: 'max-height 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.2s ease',
+    });
+    Object.assign(overlay.style, { opacity: '0', transition: 'opacity 0.3s ease' });
+
+    closeTimer = setTimeout(() => {
+      menu?.classList.add('hidden');
+      overlay?.classList.add('hidden');
+      menu.style.cssText = '';
+      overlay.style.cssText = '';
+      updateHeader();
+      closeTimer = null;
+    }, 300);
+  }
 
   toggle?.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    menu?.classList.toggle('hidden');
-    iconOpen?.classList.toggle('hidden');
-    iconClose?.classList.toggle('hidden');
+    isMenuOpen ? closeMenu() : openMenu();
   });
 
+  overlay?.addEventListener('click', closeMenu);
+
   document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      menu?.classList.add('hidden');
-      iconOpen?.classList.remove('hidden');
-      iconClose?.classList.add('hidden');
-      toggle?.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMenu);
   });
 </script>
