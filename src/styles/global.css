@@ -177,6 +177,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-conhaque); }
 
+/* ═══ Scrollbar hide utility ═══ */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
 /* ═══ Selection ═══ */
 ::selection {
   background-color: var(--color-ambar-edison);

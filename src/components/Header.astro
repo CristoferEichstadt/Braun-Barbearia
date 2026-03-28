@@ -150,14 +150,23 @@ const navLinks = [
   const cta = document.getElementById('header-cta');
 
   const heroHeight = window.innerHeight;
+  const hasHero = document.getElementById('inicio') !== null;
   let isMenuOpen = false;
   let closeTimer = null;
+
+  // Em páginas sem hero a logo fica sempre visível
+  if (!hasHero) {
+    logo?.classList.remove('opacity-0', 'pointer-events-none');
+    logo?.classList.add('opacity-100');
+    cta?.classList.remove('opacity-0', 'pointer-events-none');
+    cta?.classList.add('opacity-100');
+  }
 
   // ── Header background (scroll-aware) ──────────────────────────
   function updateHeader() {
     const y = window.scrollY;
     const scrolled = y > 80;
-    const pastHero = y > heroHeight * 0.6;
+    const pastHero = !hasHero || y > heroHeight * 0.6;
 
     if (scrolled) {
       header?.classList.add('bg-azul-petroleo/95', 'backdrop-blur-xl', 'shadow-lg', 'shadow-black/20');
