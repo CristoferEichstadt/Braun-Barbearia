@@ -24,10 +24,10 @@
   --color-cinza-areia: #D6D3D1;
 
   /* Font families */
-  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-display: 'Pacifico', cursive;
-  --font-accent: 'Big Shoulders Display', 'Bebas Neue', 'Oswald', sans-serif;
+  --font-accent: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
 }
 
 /* ═══ Base ═══ */
