@@ -2,104 +2,94 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<section id="inicio" class="relative min-h-dvh flex items-center justify-center overflow-hidden grain">
-  <!-- Background image with parallax -->
-  <div class="absolute inset-0" id="hero-parallax">
-    <img
-      src={`${base}images/01-barba-closeup-hero.jpg`}
-      alt="Barbeiro da Braun cortando cabelo de cliente, ambiente com iluminação quente e madeira escura"
-      width="1920"
-      height="1080"
-      class="h-[120%] w-full object-cover scale-110"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      style="will-change: transform;"
-    />
+<section id="inicio" class="snap-section relative flex flex-col justify-end bg-[#1a0a04]">
+
+  <!-- ░░ IMAGEM DE FUNDO ░░ -->
+  <!-- Mobile: foto 9:16 preenche o viewport inteiro sem corte -->
+  <!-- Desktop: foto panorâmica -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 669px)" srcset={`${base}/images/parede/parede9-16.png`} />
+      <img
+        src={`${base}/images/parede/paredev7.png`}
+        alt=""
+        class="h-full w-full object-cover object-top"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
   </div>
 
-  <!-- Multi-layer overlay for depth -->
-  <div class="absolute inset-0 bg-gradient-to-b from-cafe-noite/50 via-cafe-noite/40 to-cafe-noite" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-cafe-noite/60 via-transparent to-cafe-noite/40" aria-hidden="true"></div>
+  <!-- Gradiente para legibilidade dos CTAs -->
+  <div class="absolute bottom-0 left-0 right-0 h-[55%]"
+    style="background: linear-gradient(to top, rgba(8,4,2,0.85) 0%, rgba(8,4,2,0.55) 35%, rgba(8,4,2,0.15) 65%, transparent 100%);"
+    aria-hidden="true"></div>
 
-  <!-- Vignette -->
-  <div class="absolute inset-0" style="box-shadow: inset 0 0 200px 60px rgba(44,24,16,0.7);" aria-hidden="true"></div>
+  <!-- h1 oculto para SEO -->
+  <h1 class="sr-only">Braun Barbearia — Blumenau, SC</h1>
 
-  <!-- Edison ambient light -->
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full edison-glow opacity-30 blur-3xl" aria-hidden="true" style="background: radial-gradient(circle, rgba(212,145,42,0.3) 0%, transparent 70%);"></div>
+  <!-- ░░ CONTEÚDO INFERIOR ░░ -->
+  <div class="relative z-10 w-full px-4 pb-4 pt-8 max-[669px]:pb-20 text-center">
 
-  <!-- Content -->
-  <div class="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center sm:px-6 lg:px-8">
-    <!-- Small intro -->
-    <p class="mb-6 inline-flex items-center gap-2 rounded-full border border-ambar-edison/30 bg-cafe-noite/40 px-5 py-2 text-sm font-medium text-ambar-edison backdrop-blur-sm reveal">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    <!-- Badge localização -->
+    <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-5 py-2 text-xs font-medium tracking-widest uppercase text-white/60 backdrop-blur-sm reveal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       Blumenau, SC &mdash; Desde 2011
     </p>
 
-    <h1 class="font-heading text-5xl font-black leading-[0.95] text-branco sm:text-6xl md:text-7xl lg:text-8xl reveal reveal-delay-1">
-      Onde Estilo<br />
-      Encontra <span class="text-ambar-edison drop-shadow-[0_0_30px_rgba(212,145,42,0.4)]">Tradição</span>
-    </h1>
-
-    <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-branco/70 sm:text-xl reveal reveal-delay-2">
-      Cada corte, cada traço de navalha — uma obra de arte pensada para quem você é.
+    <!-- Slogan -->
+    <p class="mb-6 text-sm font-medium uppercase tracking-[0.25em] text-white/60 reveal">
+      Onde Estilo Encontra Tradição
     </p>
 
-    <div class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center reveal reveal-delay-3">
+    <!-- CTAs -->
+    <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center reveal">
       <a
         href="https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário."
         target="_blank"
         rel="noopener noreferrer"
-        class="group inline-flex items-center gap-3 rounded-full bg-ambar-edison px-8 py-4 text-lg font-bold text-cafe-noite shadow-xl shadow-ambar-edison/20 transition-all duration-300 hover:bg-amarelo-fachada hover:shadow-2xl hover:shadow-ambar-edison/30 hover:-translate-y-1 active:translate-y-0 touch-action-manipulation"
+        class="group inline-flex items-center gap-3 rounded-full bg-ambar-edison px-8 py-4 text-base font-bold uppercase tracking-wide text-cafe-noite shadow-xl shadow-ambar-edison/25 transition-all duration-300 hover:bg-amarelo-fachada hover:shadow-2xl hover:shadow-ambar-edison/35 hover:-translate-y-1 active:translate-y-0"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform duration-300 group-hover:rotate-12"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-        Agende Seu Horário
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="transition-transform duration-300 group-hover:scale-110"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar pelo WhatsApp
       </a>
-
       <a
         href="#servicos"
-        class="inline-flex items-center gap-2 rounded-full border border-branco/20 px-8 py-4 text-lg font-medium text-branco/80 backdrop-blur-sm transition-all duration-300 hover:border-ambar-edison/50 hover:text-ambar-edison hover:bg-ambar-edison/5"
+        class="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 text-base font-medium text-white/80 backdrop-blur-sm transition-all duration-300 hover:border-ambar-edison/60 hover:text-ambar-edison hover:bg-ambar-edison/5"
       >
         Ver Serviços
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </a>
     </div>
 
-    <!-- Trust strip inline -->
-    <div class="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm text-branco/40 reveal reveal-delay-4">
+    <!-- Trust strip desktop -->
+    <div class="mt-8 hidden min-[670px]:flex flex-wrap items-center justify-center gap-5 text-xs text-white/40 reveal">
       <span class="flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-ambar-edison" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="text-ambar-edison" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
         4.8 no Google
       </span>
-      <span class="h-3 w-px bg-branco/20" aria-hidden="true"></span>
-      <span>+14 anos</span>
-      <span class="h-3 w-px bg-branco/20" aria-hidden="true"></span>
-      <span>8 profissionais</span>
-      <span class="h-3 w-px bg-branco/20" aria-hidden="true"></span>
-      <span>Pix, cartão e mais</span>
+      <span class="h-3 w-px bg-white/15" aria-hidden="true"></span>
+      <span>Blumenau, SC &mdash; Desde 2011</span>
+      <span class="h-3 w-px bg-white/15" aria-hidden="true"></span>
+      <span>Equipe completa</span>
+      <span class="h-3 w-px bg-white/15" aria-hidden="true"></span>
+      <span>+15 anos de experiência</span>
     </div>
   </div>
 
-  <!-- Scroll hint -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2" aria-hidden="true">
-    <div class="flex flex-col items-center gap-2 text-branco/30">
-      <span class="text-xs uppercase tracking-widest">Scroll</span>
-      <div class="h-8 w-5 rounded-full border border-branco/30 flex items-start justify-center p-1">
-        <div class="h-2 w-1 rounded-full bg-ambar-edison animate-bounce"></div>
-      </div>
+  <!-- Trust strip mobile — fixo na base da seção -->
+  <div class="absolute bottom-5 left-4 right-4 z-10 flex justify-center max-[669px]:flex hidden">
+    <div class="inline-flex items-center gap-4 text-xs text-white/65 rounded-full border border-white/20 bg-black/30 px-5 py-2.5 backdrop-blur-sm">
+      <span class="flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" class="text-ambar-edison" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+        4.8 no Google
+      </span>
+      <span class="h-3 w-px bg-white/20" aria-hidden="true"></span>
+      <span>Equipe completa</span>
+      <span class="h-3 w-px bg-white/20" aria-hidden="true"></span>
+      <span>+15 anos de experiência</span>
     </div>
   </div>
+
 </section>
-
-<script>
-  // Parallax on scroll
-  const parallax = document.getElementById('hero-parallax');
-  if (parallax && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y < window.innerHeight * 1.5) {
-        parallax.style.transform = `translateY(${y * 0.3}px)`;
-      }
-    }, { passive: true });
-  }
-</script>

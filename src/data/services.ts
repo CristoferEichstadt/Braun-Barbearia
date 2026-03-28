@@ -24,7 +24,7 @@ export const services: Service[] = [
     badge: 'Popular',
     badgeColor: 'ambar',
     duration: '40 min',
-    image: '/images/03-corte-masculino-degrade.jpg',
+    image: '/images/corteMasculino.jpg',
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ export const services: Service[] = [
     badge: 'Econômico',
     badgeColor: 'green',
     duration: '25 min',
-    image: '/images/resultado-degrade.jpg',
+    image: '/images/CorteMaquina.jpg',
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '35 min',
-    image: '/images/braun-trabalhando.jpg',
+    image: '/images/CorteCurtoFeminino.jpg',
   },
   {
     id: 4,
@@ -102,7 +102,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/LavarCabelo.jpg',
   },
   {
     id: 8,
@@ -115,7 +115,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/04-acabamento-resultado.jpg',
+    image: '/images/pezinho.jpg',
   },
   {
     id: 9,
@@ -128,7 +128,7 @@ export const services: Service[] = [
     badge: 'Custom',
     badgeColor: 'conhaque',
     duration: '15 min',
-    image: '/images/resultado-degrade.jpg',
+    image: '/images/DesenhoRisquinho.jpg',
   },
   {
     id: 10,
@@ -141,7 +141,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/SobrancelhaNavalha.jpg',
   },
   {
     id: 11,
@@ -154,7 +154,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '15 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/SobrancelhaCera.jpg',
   },
   {
     id: 12,
@@ -167,7 +167,7 @@ export const services: Service[] = [
     badge: null,
     badgeColor: '',
     duration: '10 min',
-    image: '/images/fotoboa.jpg',
+    image: '/images/NarizOrelhaCera.jpg',
   },
   {
     id: 13,
@@ -180,6 +180,6 @@ export const services: Service[] = [
     badge: 'Destaque',
     badgeColor: 'vermelho',
     duration: '60–120 min',
-    image: '/images/braun-trabalhando.jpg',
+    image: '/images/nevou_n.jpg',
   },
 ];

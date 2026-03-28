@@ -4,7 +4,7 @@
     {
       "name": "braun-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": ["run", "dev", "--prefix", "braun-site"],
       "port": 4321
     }
   ]

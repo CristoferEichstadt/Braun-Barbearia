@@ -1,0 +1,83 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const photos = [
+  {
+    src: 'images/fotoboa.jpg',
+    alt: 'Barbeiro trabalhando com foco e precisão na Braun Barbearia',
+    label: 'O Ofício',
+    span: 'row-span-2',
+  },
+  {
+    src: 'images/interior-espelhos.jpg',
+    alt: 'Interior da Braun Barbearia com espelhos e ambiente premium',
+    label: 'O Ambiente',
+    span: '',
+  },
+  {
+    src: 'images/resultado-fade.jpg',
+    alt: 'Resultado perfeito de degradê — acabamento profissional',
+    label: 'O Resultado',
+    span: '',
+  },
+  {
+    src: 'images/braun-cortando.jpg',
+    alt: 'Braun, fundador, cortando o cabelo de um cliente',
+    label: 'O Cuidado',
+    span: 'row-span-2',
+  },
+  {
+    src: 'images/10-nicole-cerveja-interior.jpg',
+    alt: 'Nick no bar da Braun Barbearia — o ambiente único do espaço',
+    label: 'O Espaço',
+    span: '',
+  },
+  {
+    src: 'images/03-corte-masculino-degrade.jpg',
+    alt: 'Serviço de barba com navalha — precisão e arte',
+    label: 'A Arte',
+    span: '',
+  },
+];
+---
+
+<section class="snap-section bg-[#0a0705] flex flex-col pt-16" aria-label="Galeria Braun Barbearia">
+
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col flex-1 min-h-0 py-6">
+
+    <div class="flex items-end justify-between mb-4 shrink-0 reveal">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-ambar-edison">Galeria</span>
+        <h2 class="mt-1 font-accent text-3xl font-bold uppercase tracking-wide text-branco sm:text-4xl">
+          Mais Que Uma <span class="text-ambar-edison">Barbearia</span>
+        </h2>
+      </div>
+      <p class="hidden sm:block max-w-[180px] text-xs text-branco/35 text-right leading-relaxed">
+        Ambiente premium, profissionais apaixonados e resultados que falam por si.
+      </p>
+    </div>
+
+    <!-- Grid editorial — preenche o espaço restante -->
+    <div class="flex-1 min-h-0 grid grid-cols-2 lg:grid-cols-3 gap-3 [grid-auto-rows:minmax(0,1fr)]">
+      {photos.map((photo, i) => (
+        <div class={`reveal reveal-delay-${(i % 3) + 1} group relative overflow-hidden rounded-sm ${photo.span}`}>
+          <img
+            src={`${base}/${photo.src}`}
+            alt={photo.alt}
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+          />
+          <!-- Overlay escuro na base -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+          <!-- Label -->
+          <div class="absolute bottom-0 left-0 right-0 p-3 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-ambar-edison">{photo.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+</section>

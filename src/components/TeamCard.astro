@@ -9,11 +9,11 @@ const { member } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<article class={`reveal group relative overflow-hidden rounded-2xl bg-carvao-quente transition-all duration-500 hover:shadow-warm-lg ${member.isFounder ? '' : ''}`}>
+<article class={`group relative overflow-hidden rounded-2xl bg-carvao-quente transition-all duration-500 hover:shadow-warm-lg h-full flex flex-col`}>
   <!-- Photo -->
-  <div class="relative aspect-[3/4] overflow-hidden">
+  <div class="relative flex-1 min-h-0 overflow-hidden">
     <img
-      src={`${base}${member.photo.replace(/^\//, '')}`}
+      src={`${base}/${member.photo.replace(/^\//, '')}`}
       alt={`${member.nickname} — ${member.role} da Braun Barbearia`}
       width="600"
       height="800"

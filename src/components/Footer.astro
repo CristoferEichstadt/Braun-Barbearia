@@ -3,9 +3,9 @@ const base = import.meta.env.BASE_URL;
 const loja = [
   { label: 'Cortes', href: '#servicos' },
   { label: 'Barba', href: '#servicos' },
-  { label: 'Tratamentos', href: `${import.meta.env.BASE_URL}servicos` },
-  { label: 'Combos', href: `${import.meta.env.BASE_URL}servicos` },
-  { label: 'Dia do Noivo', href: `${import.meta.env.BASE_URL}servicos` },
+  { label: 'Tratamentos', href: `${import.meta.env.BASE_URL}/servicos` },
+  { label: 'Combos', href: `${import.meta.env.BASE_URL}/servicos` },
+  { label: 'Dia do Noivo', href: `${import.meta.env.BASE_URL}/servicos` },
 ];
 
 const sobre = [
@@ -19,7 +19,7 @@ const sobre = [
 const suporte = [
   { label: 'Agende Online', href: 'https://wa.me/554784334380?text=Olá! Gostaria de agendar um horário.' },
   { label: 'Fale Conosco', href: 'https://wa.me/554784334380?text=Olá! Gostaria de mais informações.' },
-  { label: 'Perguntas Frequentes', href: `${import.meta.env.BASE_URL}servicos#faq` },
+  { label: 'Perguntas Frequentes', href: `${import.meta.env.BASE_URL}/servicos#faq` },
   { label: 'Política de Privacidade', href: '#' },
   { label: 'Termos de Uso', href: '#' },
 ];
@@ -55,7 +55,7 @@ const socials = [
       <!-- Brand column -->
       <div class="lg:col-span-2">
         <img
-          src={`${base}logo-braun.svg`}
+          src={`${base}/logo-braun.svg`}
           alt="Logo da Braun Barbearia"
           width="120"
           height="36"
@@ -83,7 +83,7 @@ const socials = [
 
       <!-- Nav columns -->
       <div>
-        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Loja</h3>
+        <h3 class="font-accent text-sm font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Loja</h3>
         <ul class="mt-4 space-y-2.5" role="list">
           {loja.map((link) => (
             <li>
@@ -96,7 +96,7 @@ const socials = [
       </div>
 
       <div>
-        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Sobre Nós</h3>
+        <h3 class="font-accent text-sm font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Sobre Nós</h3>
         <ul class="mt-4 space-y-2.5" role="list">
           {sobre.map((link) => (
             <li>
@@ -109,7 +109,7 @@ const socials = [
       </div>
 
       <div>
-        <h3 class="text-[11px] font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Suporte</h3>
+        <h3 class="font-accent text-sm font-bold uppercase tracking-[0.2em] text-ambar-edison/80">Suporte</h3>
         <ul class="mt-4 space-y-2.5" role="list">
           {suporte.map((link) => (
             <li>
