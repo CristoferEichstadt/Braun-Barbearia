@@ -1,39 +1,46 @@
 ---
-const base = import.meta.env.BASE_URL;
+import { Image } from 'astro:assets';
+
+import fotoboa           from '../assets/images/fotoboa.jpg';
+import interiorEspelhos  from '../assets/images/interior-espelhos.jpg';
+import resultadoFade     from '../assets/images/resultado-fade.jpg';
+import braunCortando     from '../assets/images/braun-cortando.jpg';
+import nicoleCerveja     from '../assets/images/10-nicole-cerveja-interior.jpg';
+import corteMasculino    from '../assets/images/03-corte-masculino-degrade.jpg';
 
 const photos = [
   {
-    src: 'images/fotoboa.jpg',
+    src: fotoboa,
     alt: 'Barbeiro trabalhando com foco e precisão na Braun Barbearia',
     label: 'O Ofício',
     span: 'row-span-2',
   },
   {
-    src: 'images/interior-espelhos.jpg',
+    src: interiorEspelhos,
     alt: 'Interior da Braun Barbearia com espelhos e ambiente premium',
     label: 'O Ambiente',
     span: '',
   },
   {
-    src: 'images/resultado-fade.jpg',
+    src: resultadoFade,
     alt: 'Resultado perfeito de degradê — acabamento profissional',
     label: 'O Resultado',
     span: '',
   },
   {
-    src: 'images/braun-cortando.jpg',
+    src: braunCortando,
     alt: 'Braun, fundador, cortando o cabelo de um cliente',
     label: 'O Cuidado',
     span: 'row-span-2',
   },
   {
-    src: 'images/10-nicole-cerveja-interior.jpg',
+    src: nicoleCerveja,
     alt: 'Nick no bar da Braun Barbearia — o ambiente único do espaço',
     label: 'O Espaço',
     span: '',
   },
   {
-    src: 'images/03-corte-masculino-degrade.jpg',
+    src: corteMasculino,
     alt: 'Serviço de barba com navalha — precisão e arte',
     label: 'A Arte',
     span: '',
@@ -61,9 +68,11 @@ const photos = [
     <div class="flex-1 min-h-0 grid grid-cols-2 lg:grid-cols-3 gap-3 [grid-auto-rows:minmax(0,1fr)]">
       {photos.map((photo, i) => (
         <div class={`reveal reveal-delay-${(i % 3) + 1} group relative overflow-hidden rounded-sm ${photo.span}`}>
-          <img
-            src={`${base}/${photo.src}`}
+          <Image
+            src={photo.src}
             alt={photo.alt}
+            width={800}
+            height={1000}
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
             decoding="async"

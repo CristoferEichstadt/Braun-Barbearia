@@ -9,6 +9,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
+    service: { entrypoint: 'astro/assets/services/sharp' },
     domains: [],
   },
   site: 'https://cristofereichstadt.github.io',

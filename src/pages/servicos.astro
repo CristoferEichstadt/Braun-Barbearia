@@ -2,8 +2,39 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 import { services } from '../data/services';
 import '../styles/global.css';
+
+import imgCorteMasculino        from '../assets/images/corteMasculino.jpg';
+import imgCorteMaquina          from '../assets/images/CorteMaquina.jpg';
+import imgCorteCurtoFeminino    from '../assets/images/CorteCurtoFeminino.jpg';
+import imgBarbaTrad             from '../assets/images/02-profissionalismo-servicos.jpg';
+import imgBarbaMaquina          from '../assets/images/12-barba-navalha-servico.jpg';
+import imgBarbaSoPassar         from '../assets/images/04-acabamento-resultado.jpg';
+import imgLavarCabelo           from '../assets/images/LavarCabelo.jpg';
+import imgPezinho               from '../assets/images/pezinho.jpg';
+import imgDesenho               from '../assets/images/DesenhoRisquinho.jpg';
+import imgSobrancelhaNavalha    from '../assets/images/SobrancelhaNavalha.jpg';
+import imgSobrancelhaCera       from '../assets/images/SobrancelhaCera.jpg';
+import imgNarizOrelha           from '../assets/images/NarizOrelhaCera.jpg';
+import imgPigmentacao           from '../assets/images/nevou_n.jpg';
+
+const serviceImages: Record<number, ImageMetadata> = {
+  1:  imgCorteMasculino,
+  2:  imgCorteMaquina,
+  3:  imgCorteCurtoFeminino,
+  4:  imgBarbaTrad,
+  5:  imgBarbaMaquina,
+  6:  imgBarbaSoPassar,
+  7:  imgLavarCabelo,
+  8:  imgPezinho,
+  9:  imgDesenho,
+  10: imgSobrancelhaNavalha,
+  11: imgSobrancelhaCera,
+  12: imgNarizOrelha,
+  13: imgPigmentacao,
+};
 
 const base = import.meta.env.BASE_URL;
 const categories = ['Todos', 'Cabelo', 'Barba', 'Acabamento', 'Tratamento'] as const;
@@ -128,11 +159,11 @@ const faq = [
             >
               <!-- Image -->
               <div class="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={`${base}/${service.image.replace(/^\//, '')}`}
+                <Image
+                  src={serviceImages[service.id]}
                   alt={`Serviço ${service.name} na Braun Barbearia`}
-                  width="800"
-                  height="600"
+                  width={800}
+                  height={600}
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
