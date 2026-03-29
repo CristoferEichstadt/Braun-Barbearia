@@ -7,6 +7,7 @@ import Gallery from '../components/Gallery.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Team from '../components/Team.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
@@ -15,9 +16,12 @@ import '../styles/global.css';
   <main>
     <Hero />
     <Services />
-    <Gallery />
+<Gallery />
     <Testimonials />
     <Team />
     <CtaBanner />
   </main>
+  <div class="snap-footer">
+    <Footer />
+  </div>
 </Layout>
